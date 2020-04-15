@@ -131,6 +131,11 @@ function draw() {
 	saveBackup();
 }
 
+function drawNoBackup() {
+	drawUsing(canvas.getContext('2d'));
+}
+
+
 function selectObject(x, y) {
 	for(var i = 0; i < nodes.length; i++) {
 		if(nodes[i].containsPoint(x, y)) {
@@ -362,9 +367,11 @@ function crossBrowserRelativeMousePos(e) {
 }
 
 function output(text) {
-	var element = document.getElementById('output');
-	element.style.display = 'block';
-	element.value = text;
+	var box = document.getElementById('output');
+	box.style.display = 'block';
+	box.value = text;
+	var header = document.getElementById('outputBoxHeader');
+	header.style.display = 'block';
 }
 
 function saveAsPNG() {
@@ -396,4 +403,27 @@ function saveAsLaTeX() {
 	selectedObject = oldSelectedObject;
 	var texData = exporter.toLaTeX();
 	output(texData);
+}
+
+function saveAsJSON() {
+	output(JSON.stringify(localStorage['fsm']));
+}
+
+function loadFromJSON() {
+	var inputBox = document.getElementById("input").value;
+	// localStorage['fsm'] = "";
+	localStorage['fsm'] = JSON.parse(inputBox);
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	restoreBackup()
+	drawNoBackup();
+}
+
+function output(text) {
+	var box = document.getElementById('output');
+	box.style.display = 'block';
+	box.value = text;
+	var header = document.getElementById('outputBoxHeader');
+	header.style.display = 'block';
 }
