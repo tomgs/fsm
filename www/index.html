@@ -117,23 +117,25 @@
 
 <body>
 	<h1>Finite State Machine Designer</h1>
+	<h4 style="color: red">With save/load features! See info <a href="#intro">below</a></h4>
 	<canvas id="canvas" width="800" height="600">
 		<span class="error">Your browser does not support<br>the HTML5 &lt;canvas&gt; element</span>
 	</canvas>
 	<div>
 		<p class="center">Export as: <a href="javascript:saveAsPNG()">PNG</a> | <a href="javascript:saveAsSVG()">SVG</a>
-			| <a href="javascript:saveAsLaTeX()">LaTeX</a> | <a href="javascript:saveAsJSON()">JSON (Save to file)</a>
+			| <a href="javascript:saveAsLaTeX()">LaTeX</a> | <a style="color: red" href="javascript:saveAsJSON()">JSON</a>
 		</p>
-		<p class="center">Import from: <a href="javascript:loadFromJSON()">JSON (load from file)</a></p>
+		<p class="center">Import from: <a style="color: red" href="javascript:loadFromJSON()">JSON</a></p>
 		<h3 id="outputBoxHeader">Output Box</h3>
 		<textarea id="output"></textarea>
 		<hr>
 		<h3 id="inputBoxHeader">Input Box</h3>
-		<textarea id="input"></textarea>
-		<p>
-			This is a fork of <a href="https://github.com/evanw">evanw</a>'s awesome <a href="http://madebyevan.com/fsm/">Finite State Machine Designer.</a>
-			All I did was add an option to export to JSON, and import from JSON.
-			It works OK, but needs some additional things:
+		<textarea placeholder="Input your JSON-encoded state machine here for fun and profit!" id="input"></textarea>
+		<h4>What now?</h4>
+		<p id="intro">
+			This is a (very fast and hacky) fork of <a href="https://github.com/evanw">evanw</a>'s awesome <a href="http://madebyevan.com/fsm/">Finite State Machine Designer.</a></br>
+			All I did was add an option to export to JSON, and import from JSON.</br>
+			It works OK-ish (if your standards are very low), but needs some more love:
 			<ol>
 				<li>Loading more than once does not clear the canvas properly.</li>
 				<li>Loading more than once causes duplications.</li>
@@ -141,6 +143,21 @@
 				<li>Logically, it should allow you to load the JSON by uploading a file.</li>
 			</ol>
 		</p>
+		<p>
+			You can click "Export as" --> "JSON" to get a JSON-encoded version of your state machine.
+			Copy it and save it to a safe location. A file is probably a good safe location.
+		</p>
+		<p>
+			You can can click "Import from" --> "JSON" to import from a JSON string. Copy your string into the "Input Box", then click this button.
+			<b>DO NOT CLICK THE BUTTON TWICE,</b> there's a bug there.
+		</p>
+		<p>
+			Questions? Use the <a href="https://github.com/tomgs/tomgs.github.io/issues">repo's issue tracker</a> and I'll get notified.
+		</p>
+		<p>
+			Pull Requests? Sure! Bring 'em on  <a href="https://github.com/tomgs/tomgs.github.io/pulls">over here.</a>
+		</p>
+		<hr>
 		<p>The big white box above is the FSM designer.&nbsp; Here's how to use it:</p>
 		<ul>
 			<li><b>Add a state:</b> double-click on the canvas</li>
@@ -155,7 +172,7 @@
 		</ul>
 		<p>This was made in HTML5 and JavaScript using the canvas element.</p>
 	</div>
-	<p>Created by <a href="http://madebyevan.com/">Evan Wallace</a> in 2010</p>
+	<p>Created by <a href="http://madebyevan.com/">Evan Wallace</a> in 2010</p> (With this nasty fork by <a href="https://kidonpoint.com">Tom Granot-Scalosub</a>)
 </body>
 
 </html>
